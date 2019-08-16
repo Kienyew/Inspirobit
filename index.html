@@ -92,12 +92,26 @@
 
       var places = ['in My Heart', 'on Earth', 'in My Life', 'Before you Die', 'in Hell', 'in Heaven', 'in Minecraft', 'in the Universe', 'in School', 'in Asia', 'in Europe', 'in Africa', 'in Kenya', 'in North Korea', 'in Venezuela', 'in My House', 'in Your House', 'in the World', 'Before the Sun Risen', 'After the Sun Risen', 'on The Ceremony', 'in the Whole World', 'Under the Sea', 'Over the Rainbow', 'Flying with Bird', 'Screaming in Pain', 'in the Asylum of Lunatic'];
       
+      var verbs = ['are', 'are not', 'will never be', 'will be', 'must be', 'can\'t be', 'are just', 'are definitely', 'might be', 'may not be', 'shall not be', 'should be', 'must be'];
+
       function inspire() {
         let n = randint(0, 1).toString();
         let adjective = random_choice(adjectives);
         let place = random_choice(places);
+        let verb = random_choice(verbs)
+        let text;
+        if (n == 0) {
+        	if (Math.random() < 0.5) {
+        		text = `Nothing is ${adjective} ${place}.`;
+        	} else {
+				text = `Nothing ${place} is ${adjective}.`;
+        	}
+        } else {
+        	text = `You ${verb} the ${adjective} one ${place}.`;
+        }
+
+		description.innerText = text; 
         bit.innerText = n.toString();
-        description.innerText = (n == 0) ? `Nothing is ${adjective} ${place}.` : `You ${random_choice(['are', 'are not', 'will never be', 'will be', 'must be', 'can\'t be', 'are just', 'are definitely', 'might be', 'may not', 'shall not', 'should be', 'must be'])} the ${adjective} one ${random_choice(places)}!`;
       }
 
       inspire_button.addEventListener('click', inspire);
